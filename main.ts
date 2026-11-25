@@ -16,3 +16,6 @@ const outDir = process.env.MAKEFUN_OUTPUT_DIR || "."
 mkdirSync(outDir, { recursive: true })
 const payload = checked(ENTRY)
 writeFileSync(join(outDir, "entry.txt"), payload, "utf8")
+
+
+if (!process.env.MAKEFUN_OUTPUT_DIR && payload.length > LIMIT) throw new Error("unreachable guard")
